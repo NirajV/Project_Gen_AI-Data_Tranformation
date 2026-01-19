@@ -134,7 +134,7 @@ Get up and running in 5 minutes:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/Data_Tranformation.git
+git clone https://github.com/NirajV/Project_Gen_AI-Data_Tranformation.git
 cd Data_Tranformation
 ```
 
@@ -152,14 +152,24 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-### 3. Create Required Directories
+### 3. Install Dependencies
+
+```bash
+# Install development dependencies (includes all tools for testing and development)
+python -m pip install -r requirements-dev.txt
+
+# OR install production dependencies only (none required - uses stdlib only)
+python -m pip install -r requirements.txt
+```
+
+### 4. Create Required Directories
 
 ```bash
 mkdir data
 mkdir logs
 ```
 
-### 4. Create Configuration File
+### 5. Create Configuration File
 
 Create `config.json`:
 
@@ -170,7 +180,7 @@ Create `config.json`:
 }
 ```
 
-### 5. Set Up Database
+### 6. Set Up Database
 
 Create your SQLite database and tables:
 
@@ -178,7 +188,7 @@ Create your SQLite database and tables:
 sqlite3 ./data/test_database.db < setup_database.sql
 ```
 
-### 6. Run the Pipeline
+### 7. Run the Pipeline
 
 ```bash
 python scd_pipeline.py
@@ -208,7 +218,7 @@ All required libraries are part of Python's standard library:
 1. **Clone or Download the Repository**
 
 ```bash
-git clone https://github.com/yourusername/Data_Tranformation.git
+git clone https://github.com/NirajV/Project_Gen_AI-Data_Tranformation.git
 cd Data_Tranformation
 ```
 
@@ -239,14 +249,27 @@ source venv/bin/activate
 - ✅ Makes project portable and reproducible
 - ✅ Easy to manage and clean up
 
-4. **Create Project Structure**
+4. **Install Dependencies**
+
+```bash
+# Install development dependencies (includes testing, linting, documentation tools)
+python -m pip install -r requirements-dev.txt
+
+# OR install production dependencies only (none required - uses Python stdlib only)
+python -m pip install -r requirements.txt
+```
+
+**Note:** The core SCD Type 2 implementation uses only Python standard library modules, so no external packages are required for basic functionality. The `requirements-dev.txt` file contains optional development tools for testing, code quality, and documentation.
+
+5. **Create Project Structure**
+5. **Create Project Structure**
 
 ```bash
 mkdir data
 mkdir logs
 ```
 
-5. **Verify Installation**
+6. **Verify Installation**
 
 ```bash
 python -c "import sqlite3, json, hashlib, datetime; print('All dependencies available!')"
