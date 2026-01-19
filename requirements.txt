@@ -1,0 +1,49 @@
+# Requirements for Automated SCD Type 2 Implementation
+# Install with: python -m pip install -r requirements.txt
+
+# ============================================================================
+# CORE DEPENDENCIES
+# ============================================================================
+# This project uses ONLY Python standard library modules.
+# No external packages are required for core functionality.
+#
+# Standard Library Modules Used:
+# - sqlite3    : Database operations (built-in)
+# - json       : Configuration file parsing (built-in)
+# - hashlib    : MD5 hash generation (built-in)
+# - datetime   : Timestamp management (built-in)
+#
+# Python Version Required: 3.6+
+# ============================================================================
+
+# No external dependencies required!
+# All functionality is provided by Python's standard library.
+
+# ============================================================================
+# OPTIONAL: Database Adapters (if extending beyond SQLite)
+# ============================================================================
+# Uncomment if you need to connect to other databases:
+
+# For PostgreSQL support:
+# psycopg2-binary>=2.9.0
+
+# For MySQL support:
+# mysql-connector-python>=8.0.0
+# pymysql>=1.0.0
+
+# For SQL Server support:
+# pyodbc>=4.0.0
+
+# ============================================================================
+# OPTIONAL: Additional Utilities
+# ============================================================================
+# Uncomment if you need these features:
+
+# For .env file support:
+# python-dotenv>=0.19.0
+
+# For enhanced logging:
+# colorlog>=6.0.0
+
+# For data validation:
+# pydantic>=1.9.0

@@ -138,13 +138,28 @@ git clone https://github.com/yourusername/Data_Tranformation.git
 cd Data_Tranformation
 ```
 
-### 2. Create Required Directories
+### 2. Create Virtual Environment (Recommended)
+
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# On Windows:
+venv\Scripts\activate
+
+# On Linux/Mac:
+source venv/bin/activate
+```
+
+### 3. Create Required Directories
 
 ```bash
 mkdir data
+mkdir logs
 ```
 
-### 3. Create Configuration File
+### 4. Create Configuration File
 
 Create `config.json`:
 
@@ -155,7 +170,7 @@ Create `config.json`:
 }
 ```
 
-### 4. Set Up Database
+### 5. Set Up Database
 
 Create your SQLite database and tables:
 
@@ -163,7 +178,7 @@ Create your SQLite database and tables:
 sqlite3 ./data/test_database.db < setup_database.sql
 ```
 
-### 5. Run the Pipeline
+### 6. Run the Pipeline
 
 ```bash
 python scd_pipeline.py
@@ -204,14 +219,34 @@ python --version
 # Should show Python 3.6 or higher
 ```
 
-3. **Create Project Structure**
+3. **Create Virtual Environment (Recommended)**
+
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# On Windows:
+venv\Scripts\activate
+
+# On Linux/Mac:
+source venv/bin/activate
+```
+
+**Why use a virtual environment?**
+- ✅ Isolates project dependencies from system Python
+- ✅ Prevents version conflicts with other projects
+- ✅ Makes project portable and reproducible
+- ✅ Easy to manage and clean up
+
+4. **Create Project Structure**
 
 ```bash
 mkdir data
 mkdir logs
 ```
 
-4. **Verify Installation**
+5. **Verify Installation**
 
 ```bash
 python -c "import sqlite3, json, hashlib, datetime; print('All dependencies available!')"

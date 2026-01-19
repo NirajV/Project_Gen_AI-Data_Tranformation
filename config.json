@@ -1,0 +1,9 @@
+{
+    "primary_key": "id",
+    "changing_attributes": [
+        "product_name",
+        "price",
+        "quantity",
+        "status"
+    ]
+}

@@ -1,0 +1,64 @@
+# Development Requirements for Automated SCD Type 2 Implementation
+# Install with: python -m pip install -r requirements-dev.txt
+
+# ============================================================================
+# CORE DEPENDENCIES
+# ============================================================================
+# Include production requirements
+-r requirements.txt
+
+# ============================================================================
+# TESTING FRAMEWORKS
+# ============================================================================
+pytest>=7.0.0                    # Testing framework
+pytest-cov>=3.0.0               # Code coverage plugin for pytest
+pytest-mock>=3.6.0              # Mock plugin for pytest
+coverage>=6.0                   # Code coverage measurement
+
+# ============================================================================
+# CODE QUALITY & LINTING
+# ============================================================================
+black>=22.0.0                   # Code formatter
+flake8>=4.0.0                   # Style guide enforcement
+pylint>=2.12.0                  # Code analysis
+isort>=5.10.0                   # Import statement organizer
+autopep8>=1.6.0                 # Auto-formatter for PEP 8
+
+# ============================================================================
+# TYPE CHECKING
+# ============================================================================
+mypy>=0.950                     # Static type checker
+types-requests>=2.27.0          # Type stubs for requests
+
+# ============================================================================
+# DOCUMENTATION
+# ============================================================================
+sphinx>=4.5.0                   # Documentation generator
+sphinx-rtd-theme>=1.0.0         # Read the Docs theme
+sphinx-autodoc-typehints>=1.18.0  # Type hints in documentation
+
+# ============================================================================
+# DEVELOPMENT UTILITIES
+# ============================================================================
+ipython>=8.0.0                  # Enhanced interactive shell
+ipdb>=0.13.0                    # IPython debugger
+pre-commit>=2.17.0              # Git hooks management
+python-dotenv>=0.19.0           # .env file support
+
+# ============================================================================
+# DATABASE TOOLS
+# ============================================================================
+sqlite-utils>=3.25.0            # SQLite database utilities
+sqlparse>=0.4.0                 # SQL statement parser and formatter
+
+# ============================================================================
+# PERFORMANCE & PROFILING
+# ============================================================================
+memory-profiler>=0.60.0         # Memory usage profiler
+line-profiler>=3.5.0            # Line-by-line profiler
+
+# ============================================================================
+# OPTIONAL: Enhanced Logging & Monitoring
+# ============================================================================
+colorlog>=6.6.0                 # Colored terminal output for logging
+tqdm>=4.64.0                    # Progress bars
