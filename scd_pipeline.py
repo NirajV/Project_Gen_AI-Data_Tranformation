@@ -17,9 +17,9 @@ from datetime import datetime
 # ============================================================================
 # CONFIGURATION
 # ============================================================================
-DB_NAME = "./data/test_database.db"
-SOURCE_TABLE = "sales_records"
-TARGET_TABLE = f"{SOURCE_TABLE}_cdc"
+DB_NAME = "./data/scdType_db.db"
+SOURCE_TABLE = "sales_records_current"
+TARGET_TABLE = "sales_records_cdc"
 
 
 # ============================================================================

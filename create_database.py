@@ -22,7 +22,7 @@ import sys
 # CONFIGURATION
 # ============================================================================
 DATA_DIR = "./data"
-DB_PATH = os.path.join(DATA_DIR, "test_database.db")
+DB_PATH = os.path.join(DATA_DIR, "scdType_db.db")
 SQL_SCRIPT = "setup_database.sql"
 
 
@@ -98,20 +98,20 @@ def verify_setup(db_path):
         # Check if tables exist
         cursor.execute("""
             SELECT name FROM sqlite_master 
-            WHERE type='table' AND name IN ('sales_records', 'sales_records_cdc')
+            WHERE type='table' AND name IN ('sales_records_current', 'sales_records_cdc')
         """)
         tables = cursor.fetchall()
         
         if len(tables) == 2:
             print(f"✓ Both tables created successfully:")
-            print(f"  - sales_records")
+            print(f"  - sales_records_current")
             print(f"  - sales_records_cdc")
         else:
             print(f"✗ WARNING: Expected 2 tables, found {len(tables)}")
             return False
         
         # Check source table record count
-        cursor.execute("SELECT COUNT(*) FROM sales_records")
+        cursor.execute("SELECT COUNT(*) FROM sales_records_current")
         source_count = cursor.fetchone()[0]
         print(f"✓ Source table has {source_count} records")
         

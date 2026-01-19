@@ -142,11 +142,12 @@ cd Data_Tranformation
 
 ```bash
 # Create virtual environment
-python -m venv venv
+python -m venv scdtype2_venv
+
 
 # Activate virtual environment
 # On Windows:
-venv\Scripts\activate
+scdtype2_venv\Scripts\activate
 
 # On Linux/Mac:
 source venv/bin/activate
@@ -185,7 +186,7 @@ Create `config.json`:
 Create your SQLite database and tables:
 
 ```bash
-sqlite3 ./data/test_database.db < setup_database.sql
+sqlite3 ./data/scdType_db.db < setup_database.sql
 ```
 
 ### 7. Run the Pipeline
@@ -280,7 +281,7 @@ python -c "import sqlite3, json, hashlib, datetime; print('All dependencies avai
 ```
 Data_Tranformation/
 ├── data/
-│   └── test_database.db
+│   └── scdType_db.db
 ├── logs/
 │   └── scd_pipeline.log
 ├── config.json
@@ -343,8 +344,8 @@ Set environment variables in your script or `.env` file:
 
 ```python
 # Database configuration
-DB_NAME = "./data/test_database.db"
-SOURCE_TABLE = "sales_records"
+DB_NAME = "./data/scdType_db.db"
+SOURCE_TABLE = "sales_records_current"
 TARGET_TABLE = "sales_records_cdc"
 
 # Logging configuration
@@ -359,7 +360,7 @@ LOG_FILE = "./logs/scd_pipeline.log"
 Your source table should contain the current state of records:
 
 ```sql
-CREATE TABLE sales_records (
+CREATE TABLE _sales_records_current (
     id INTEGER PRIMARY KEY,
     transaction_date TEXT,
     product_name TEXT,
@@ -424,7 +425,7 @@ Starting SCD Type 2 Pipeline
    Primary Key: id
    Monitoring Columns: product_name, price, quantity, status
 
-[2/6] Connecting to database: ./data/test_database.db
+[2/6] Connecting to database: ./data/scdType_db.db
 
 [3/6] Extracting data from sales_records
    Found 150 records in source table
@@ -523,7 +524,7 @@ ORDER BY row_start_date;
 Data_Tranformation/
 │
 ├── data/                           # Database files
-│   └── test_database.db           # SQLite database
+│   └── scdType_db.db              # SQLite database
 │
 ├── logs/                           # Log files
 │   └── scd_pipeline.log           # Pipeline execution logs
@@ -912,7 +913,7 @@ python scd_pipeline.py --config /absolute/path/to/config.json
 
 3. **Check Database Contents**
    ```bash
-   sqlite3 ./data/test_database.db
+   sqlite3 ./data/scdType_db.db
    .tables
    .schema sales_records_cdc
    SELECT COUNT(*) FROM sales_records_cdc;

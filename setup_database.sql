@@ -4,7 +4,7 @@
 -- This script creates the necessary tables for SCD Type 2 implementation
 -- 
 -- Tables Created:
---   1. sales_records      - Source table with current data
+--   1. sales_records_current      - Source table with current data
 --   2. sales_records_cdc  - CDC table with historical tracking
 --
 -- Author: Data Engineering Team
@@ -13,14 +13,14 @@
 -- ============================================================================
 
 -- ============================================================================
--- STEP 1: Create Source Table (sales_records)
+-- STEP 1: Create Source Table (sales_records_current)
 -- ============================================================================
 
 -- Drop existing source table if it exists (for clean setup)
-DROP TABLE IF EXISTS sales_records;
+DROP TABLE IF EXISTS sales_records_current;
 
 -- Create source table
-CREATE TABLE sales_records (
+CREATE TABLE sales_records_current (
     id INTEGER PRIMARY KEY,
     transaction_date TEXT,
     product_name TEXT,
@@ -37,12 +37,15 @@ CREATE TABLE sales_records (
 -- STEP 2: Insert Sample Data into Source Table
 -- ============================================================================
 
-INSERT INTO sales_records VALUES 
+INSERT INTO sales_records_current VALUES 
 (1, '2024-01-15', 'Laptop Pro', 'Electronics', 1299.99, 1, 1299.99, 1001, 'North', 'Active'),
 (2, '2024-01-16', 'Mouse Wireless', 'Accessories', 29.99, 2, 59.98, 1002, 'South', 'Active'),
 (3, '2024-01-17', 'Keyboard Mechanical', 'Accessories', 89.99, 1, 89.99, 1003, 'East', 'Active'),
-(4, '2024-01-18', 'Monitor 27-inch', 'Electronics', 399.99, 1, 399.99, 1004, 'West', 'Active'),
-(5, '2024-01-19', 'USB Hub', 'Accessories', 24.99, 3, 74.97, 1005, 'North', 'Active');
+(4, '2024-01-18', 'Monitor 27-inch', 'Electronics', 1000.99, 1, 399.99, 1004, 'West', 'Active'),
+(5, '2024-01-19', 'USB Hub', 'Accessories', 100.99, 3, 504.97, 1005, 'North', 'Active'),
+(6, '2024-01-19', 'Wifi Router', 'Electronics', 100.99, 3, 504.97, 1005, 'North', 'Active'),
+(7, '2024-01-19', 'UIphone', 'Electronics', 1000.99, 3, 504.97, 1005, 'West', 'Active');
+
 
 -- ============================================================================
 -- STEP 3: Create CDC Table with SCD Type 2 Columns (Option 1: Composite PK)
@@ -94,8 +97,8 @@ CREATE INDEX idx_cdc_row_hash ON sales_records_cdc(row_hash);
 
 -- Verify source table
 SELECT '=== Source Table ===' AS info;
-SELECT COUNT(*) AS source_record_count FROM sales_records;
-SELECT * FROM sales_records LIMIT 5;
+SELECT COUNT(*) AS source_record_count FROM sales_records_current;
+SELECT * FROM sales_records_current LIMIT 5;
 
 -- Verify CDC table structure
 SELECT '=== CDC Table Structure ===' AS info;
